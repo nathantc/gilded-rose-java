@@ -1,5 +1,4 @@
 # gilded-rose-java
 
-This code originated on Emily Bache's GildedRose-Refactoring-Kata repo:
+This code originated on Emily Bache's com.gildedrose.GildedRose-Refactoring-Kata repo: https://github.com/emilybache/com.gildedrose.GildedRose-Refactoring-Kata
 
-https://github.com/emilybache/GildedRose-Refactoring-Kata
