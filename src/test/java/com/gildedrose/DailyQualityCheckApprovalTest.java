@@ -1,13 +1,17 @@
 package com.gildedrose;
 
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DailyQualityCheckApprovalTest {
 
-    @Test
-    public void twoDays() {
-        Item[] items = new Item[] {
+    private Item[] items;
+    private GildedRose app;
+
+    @BeforeEach
+    public void beforeEach() {
+        items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
                 new Item("Aged Brie", 2, 0), //
                 new Item("Elixir of the Mongoose", 5, 7), //
@@ -19,13 +23,30 @@ public class DailyQualityCheckApprovalTest {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        app = new GildedRose(items);
+    }
 
-        int days = 2;
+    private void updateQualityForNumberOfDays(int days) {
         for (int i = 0; i < days; i++) {
             app.updateQuality();
         }
 
         Approvals.verifyAll(items, item -> item.toString());
     }
+
+    @Test
+    public void twoDays() {
+        updateQualityForNumberOfDays(2);
+    }
+
+    @Test
+    public void fiveDays() {
+        updateQualityForNumberOfDays(5);
+    }
+
+    @Test
+    public void sevenDays() {
+        updateQualityForNumberOfDays(7);
+    }
+
 }
