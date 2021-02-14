@@ -14,21 +14,21 @@ class GildedRoseTest {
         assertEquals("Aged Brie", app.items[0].name);
     }
 
-   /* @Test
+   @Test
     void itemDegradesByOneEachDay(){
-        Item[] items = new Item[] { new Item("Aged Brie", 5, 5) };
+        Item[] items = new Item[] { new Item("foo", 5, 5) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(4,app.items[0].quality);
-    }*/
+    }
 
- /*   @Test
+    @Test
     void qualityDegradesTwiceAfterSellByDate() {
-        Item[] items = new Item[] { new Item("Aged Brie", 0, 10) };
+        Item[] items = new Item[] { new Item("foo", 0, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(8,app.items[0].quality);
-    }*/
+    }
 
     @Test
     void qualityCanNeverBeNegative() {
