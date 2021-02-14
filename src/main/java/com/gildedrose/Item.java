@@ -24,12 +24,8 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    void increaseQualityByOne() {
-        this.quality++;
-    }
-
     void increaseQuality() {
-        if (this.quality < MAX_QUALITY) this.increaseQualityByOne();
+        if (this.quality < MAX_QUALITY) this.quality++;
     }
 
     void increaseQualityWhenSellInHasFartherDay() {
@@ -63,7 +59,7 @@ public class Item {
 
     void increaseQualityIncludingBackstage() {
         if (this.quality < MAX_QUALITY) {
-            this.increaseQualityByOne();
+            this.quality++;
             this.increaseQualityForBackstage();
         }
     }
@@ -98,12 +94,15 @@ public class Item {
     }
 
     void updateQuality() {
-        if(!this.isAgedBrie() && !this.isBackstage()) {
+        if(notAgedBrieAndNotBackstage()) {
             this.hasQuality();
-        }
-        else {
+        } else {
             this.increaseQualityIncludingBackstage();
         }
+    }
+
+    private boolean notAgedBrieAndNotBackstage() {
+        return !this.isAgedBrie() && !this.isBackstage();
     }
 
     boolean isAgedBrie(){
