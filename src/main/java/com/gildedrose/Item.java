@@ -88,7 +88,7 @@ public class Item {
 
     void updateSellIn() {
         if (!this.isSulfuras()) {
-            this.sellIn = this.sellIn - 1;
+            this.sellIn--;
         }
         this.handleIfExpired();
     }
