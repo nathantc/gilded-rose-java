@@ -65,11 +65,21 @@ class GildedRoseTest {
     }
 
     @Test
-    void qualityWillIncreaseByOneMoreThanTenDaysForBackstage() {
+    void qualityWillIncreaseByOneMoreWhenTenDaysOrMoreForBackstage() {
         Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 20, 25)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(26, app.items[0].quality);
 
     }
+
+    @Test
+    void qualityWillIncreaseByTwoMoreWhenLessThanTenDaysForBackstage() {
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 9, 25)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(27, app.items[0].quality);
+
+    }
+
 }
