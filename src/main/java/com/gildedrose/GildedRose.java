@@ -9,7 +9,9 @@ class GildedRose {
         for(int i = 0; i < items.length; i++){
             if (GildedRoseItem.LEGENDARY_ITEM.equals(items[i].name)) {
                 this.items[i] = new LegendaryItem(items[i]);
-            } else {
+            } else if(GildedRoseItem.AGED_BRIE.equals(items[i].name)) {
+                this.items[i] = new AgedBrieItem(items[i]);
+            }else {
                 this.items[i] = new GildedRoseItem(items[i]);
             }
 

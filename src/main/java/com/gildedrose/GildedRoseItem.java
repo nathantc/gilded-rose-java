@@ -51,7 +51,7 @@ public class GildedRoseItem extends Item {
         }
     }
 
-    void handleExpiredAgedBrie() {
+    void handleExpiredItem() {
         if (!this.isBackstage()) {
             this.hasQuality();
         } else {
@@ -59,39 +59,23 @@ public class GildedRoseItem extends Item {
         }
     }
 
-    void handleExpired() {
-        if (!this.isAgedBrie()) {
-            this.handleExpiredAgedBrie();
-        } else {
-            this.increaseQuality();
-        }
-    }
-
-    void handleIfExpired() {
-        if (this.sellIn < 0) {
-            this.handleExpired();
-        }
-    }
-
     public void updateSellIn() {
         this.sellIn--;
-        this.handleIfExpired();
+        if (itemHasExpired()) {
+            handleExpiredItem();
+        }
+    }
+
+    protected boolean itemHasExpired() {
+        return this.sellIn < 0;
     }
 
     public void updateQuality() {
-        if(notAgedBrieAndNotBackstage()) {
+        if(!isBackstage()) {
             this.hasQuality();
         } else {
             this.increaseQualityIncludingBackstage();
         }
-    }
-
-    private boolean notAgedBrieAndNotBackstage() {
-        return !this.isAgedBrie() && !this.isBackstage();
-    }
-
-    boolean isAgedBrie(){
-        return this.name.equals(AGED_BRIE);
     }
 
     boolean isBackstage(){
