@@ -6,12 +6,11 @@ import org.junit.jupiter.api.Test;
 
 public class DailyQualityCheckApprovalTest {
 
-    private Item[] items;
     private GildedRose app;
 
     @BeforeEach
     public void beforeEach() {
-        items = new Item[] {
+        Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
                 new Item("Aged Brie", 2, 0), //
                 new Item("Elixir of the Mongoose", 5, 7), //
@@ -31,7 +30,7 @@ public class DailyQualityCheckApprovalTest {
             app.updateQuality();
         }
 
-        Approvals.verifyAll(items, item -> item.toString());
+        Approvals.verifyAll(app.items, item -> item.toString());
     }
 
     @Test
