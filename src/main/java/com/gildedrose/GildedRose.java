@@ -7,7 +7,12 @@ class GildedRose {
         this.items = new GildedRoseItem[items.length];
 
         for(int i = 0; i < items.length; i++){
-            this.items[i] = new GildedRoseItem(items[i]);
+            if (GildedRoseItem.LEGENDARY_ITEM.equals(items[i].name)) {
+                this.items[i] = new LegendaryItem(items[i]);
+            } else {
+                this.items[i] = new GildedRoseItem(items[i]);
+            }
+
         }
     }
 

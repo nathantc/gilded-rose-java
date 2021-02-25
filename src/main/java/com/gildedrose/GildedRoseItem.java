@@ -1,8 +1,14 @@
 package com.gildedrose;
 
-import com.gildedrose.Item;
-
 public class GildedRoseItem extends Item {
+
+    public static final String AGED_BRIE = "Aged Brie";
+    public static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String LEGENDARY_ITEM = "Sulfuras, Hand of Ragnaros";
+    public static final int MAX_QUALITY = 50;
+    public static final int FARTHER_DAY = 11;
+    public static final int CLOSER_DAY = 6;
+
     public GildedRoseItem(Item item) {
         super(item.name, item.sellIn, item.quality);
     }
@@ -22,9 +28,7 @@ public class GildedRoseItem extends Item {
     }
 
     void decreaseQualityWhenNotSulfuras() {
-        if (!this.isSulfuras()) {
-            this.quality--;
-        }
+        this.quality--;
     }
 
     void hasQuality() {
@@ -69,14 +73,12 @@ public class GildedRoseItem extends Item {
         }
     }
 
-    void updateSellIn() {
-        if (!this.isSulfuras()) {
-            this.sellIn--;
-        }
+    public void updateSellIn() {
+        this.sellIn--;
         this.handleIfExpired();
     }
 
-    void updateQuality() {
+    public void updateQuality() {
         if(notAgedBrieAndNotBackstage()) {
             this.hasQuality();
         } else {
@@ -96,7 +98,4 @@ public class GildedRoseItem extends Item {
         return this.name.equals(BACKSTAGE);
     }
 
-    boolean isSulfuras(){
-        return this.name.equals(SULFURAS);
-    }
 }
