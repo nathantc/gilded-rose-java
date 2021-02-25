@@ -27,13 +27,9 @@ public class GildedRoseItem extends Item {
         }
     }
 
-    void decreaseQualityWhenNotSulfuras() {
-        this.quality--;
-    }
-
-    void hasQuality() {
+    void decreaseQuality() {
         if (this.quality > 0) {
-            this.decreaseQualityWhenNotSulfuras();
+            this.quality--;
         }
     }
 
@@ -53,7 +49,7 @@ public class GildedRoseItem extends Item {
 
     void handleExpiredItem() {
         if (!this.isBackstage()) {
-            this.hasQuality();
+            this.decreaseQuality();
         } else {
             this.quality = 0;
         }
@@ -72,7 +68,7 @@ public class GildedRoseItem extends Item {
 
     public void updateQuality() {
         if(!isBackstage()) {
-            this.hasQuality();
+            this.decreaseQuality();
         } else {
             this.increaseQualityIncludingBackstage();
         }
