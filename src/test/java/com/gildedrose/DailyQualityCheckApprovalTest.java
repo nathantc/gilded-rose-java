@@ -31,7 +31,7 @@ public class DailyQualityCheckApprovalTest {
             app.updateQuality();
         }
 
-        Approvals.verifyAll(items, item -> item.toString());
+        Approvals.verifyAll(app.items, item -> item.toString());
     }
 
     @Test
