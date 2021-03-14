@@ -5,6 +5,7 @@ public class GildedRoseItem extends Item {
     public static final String LEGENDARYITEM = "Sulfuras, Hand of Ragnaros";
     public static final String BACKSTAGEPASSES = "Backstage passes to a TAFKAL80ETC concert";
     public static final String AGEDBRIEITEM = "Aged Brie";
+    public static final String CONJUREDITEM = "Conjured Item";
 
     public GildedRoseItem(Item item) {
         super(item.name, item.sellIn, item.quality);
@@ -40,6 +41,10 @@ public class GildedRoseItem extends Item {
         if (quality > 0) {
             quality--;
         }
+    }
+
+    protected void decreaseQualityByTwo() {
+        quality-=2;
     }
 
     protected void adjustQualityToZero() {

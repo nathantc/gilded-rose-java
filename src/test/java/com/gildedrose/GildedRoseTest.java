@@ -134,4 +134,13 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
     }
+
+    @Test
+    void qualityWillDecreaseByTwoForConjuredItem() {
+        Item[] items = new Item[]{new Item("Conjured Item", 7, 16)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(14, app.items[0].quality);
+    }
+
 }
